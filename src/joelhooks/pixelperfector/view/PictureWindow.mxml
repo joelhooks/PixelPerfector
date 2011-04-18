@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<s:Window xmlns:fx="http://ns.adobe.com/mxml/2009"
+          xmlns:s="library://ns.adobe.com/flex/spark"
+          xmlns:controls="mx.controls.*"
+          resizable="{NativeWindowResize.NONE}"
+          maximizable="false" transparent="true" type="{NativeWindowType.LIGHTWEIGHT}"
+          systemChrome="{NativeWindowSystemChrome.NONE}" mouseDown="nativeWindow.startMove();"
+          showStatusBar="false" backgroundAlpha="0"
+          doubleClick="doubleClickHandler(event)" doubleClickEnabled="true">
+
+    <fx:Script><![CDATA[
+
+        [Bindable]
+        private var imageAlpha:Number = .5;
+
+        private var _source:Bitmap;
+
+        public function get source():Bitmap
+        {
+            return _source;
+        }
+
+        [Bindable]
+        public function set source(value:Bitmap):void
+        {
+            _source = value;
+
+            this.height = value.height;
+            this.width = value.width;
+        }
+
+        private function doubleClickHandler(event:MouseEvent):void {
+            close();
+        }
+        ]]></fx:Script>
+    <controls:Image id="image" source="{source}" width="100%" height="100%" alpha="{imageAlpha}"/>
+</s:Window>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+                       xmlns:pixelperfector="joelhooks.pixelperfector.*" showStatusBar="false">
+    <fx:Declarations>
+        <pixelperfector:PixelPerfectorContext contextView="{this}"/>
+    </fx:Declarations>
+
+    <s:layout>
+        <s:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+    </s:layout>
+
+    <fx:Script><![CDATA[
+        import org.osflash.signals.Signal;
+
+        public var fetch:Signal = new Signal();
+
+        private function fetchImage():void
+        {
+            fetch.dispatch();
+        }
+        ]]></fx:Script>
+    <s:Button click="fetchImage()" label="Choose Image"/>
+</s:WindowedApplication>
